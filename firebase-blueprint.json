@@ -1,0 +1,98 @@
+{
+  "entities": {
+    "WorkshopTool": {
+      "title": "WorkshopTool",
+      "description": "Schneidwerkzeug oder Halter in der Werkstatt",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "holderCode": { "type": "string" },
+        "type": { "type": "string" },
+        "isOwned": { "type": "boolean" },
+        "insertCode": { "type": "string" },
+        "shankMm": { "type": "number" },
+        "lengthMm": { "type": "number" },
+        "cornerRadiusMm": { "type": "number" },
+        "recommendedVcCarbide": { "type": "number" },
+        "recommendedVcHss": { "type": "number" },
+        "notes": { "type": "string" },
+        "updatedAt": { "type": "string" }
+      },
+      "required": ["id", "name", "type", "isOwned"]
+    },
+    "LatheConfig": {
+      "title": "LatheConfig",
+      "description": "Benutzerdefinierte Drehbank-Maschine",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "isStepless": { "type": "boolean" },
+        "minRpm": { "type": "number" },
+        "maxRpm": { "type": "number" },
+        "steps": {
+          "type": "array"
+        },
+        "updatedAt": { "type": "string" }
+      },
+      "required": ["id", "name", "isStepless"]
+    },
+    "SavedJob": {
+      "title": "SavedJob",
+      "description": "Merkzettel-Eintrag für ein Drehteil",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "title": { "type": "string" },
+        "date": { "type": "string" },
+        "materialId": { "type": "string" },
+        "materialName": { "type": "string" },
+        "diameter": { "type": "number" },
+        "operation": { "type": "string" },
+        "toolType": { "type": "string" },
+        "rpm": { "type": "number" },
+        "feedRate": { "type": "number" },
+        "depthOfCut": { "type": "number" },
+        "cuttingSpeed": { "type": "number" },
+        "notes": { "type": "string" },
+        "updatedAt": { "type": "string" }
+      },
+      "required": ["id", "title", "materialId", "diameter", "operation", "toolType"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}/tools/{toolId}": {
+      "schema": { "$ref": "#/entities/WorkshopTool" },
+      "description": "Werkzeuge des Benutzers"
+    },
+    "/users/{userId}/lathes/{latheId}": {
+      "schema": { "$ref": "#/entities/LatheConfig" },
+      "description": "Benutzerdefinierte Drehbänke"
+    },
+    "/users/{userId}/jobs/{jobId}": {
+      "schema": { "$ref": "#/entities/SavedJob" },
+      "description": "Merkzettel-Einträge des Benutzers"
+    },
+    "/users/{userId}/custom_materials/{materialId}": {
+      "schema": {
+        "title": "CustomMaterial",
+        "description": "Benutzerdefinierte Werkstoffe",
+        "type": "object",
+        "properties": {
+          "id": { "type": "string" },
+          "name": { "type": "string" },
+          "standardCode": { "type": "string" },
+          "group": { "type": "string" },
+          "isoClass": { "type": "string" },
+          "kc1_1": { "type": "number" },
+          "cooling": { "type": "string" },
+          "notes": { "type": "string" },
+          "updatedAt": { "type": "string" }
+        },
+        "required": ["id", "name", "group", "isoClass"]
+      },
+      "description": "Eigene Werkstoffe des Benutzers"
+    }
+  }
+}

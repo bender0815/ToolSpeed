@@ -1,0 +1,6 @@
+{
+  "name": "ToolSpeed - Schnittdaten & Drehzahlrechner",
+  "description": "Intelligenter Werkstatt-Rechner für Drehzahl, Vorschub, Schnitttiefe und Schnittgeschwindigkeit an der Drehbank nach Tabellenbuch Metall.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
