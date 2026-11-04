@@ -6,7 +6,7 @@ import {defineConfig} from 'vite';
 export default defineConfig(({command}) => {
   const repoName = process.env.GITHUB_REPOSITORY
     ? process.env.GITHUB_REPOSITORY.split('/')[1]
-    : 'DrehSpeed';
+    : 'ToolSpeed';
 
   return {
     base: command === 'build' ? `/${repoName}/` : '/',

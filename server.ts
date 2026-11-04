@@ -376,7 +376,7 @@ async function startServer() {
   }
 
   app.listen(PORT, '0.0.0.0', () => {
-    console.log(`DrehSpeed server running at http://0.0.0.0:${PORT}`);
+    console.log(`ToolSpeed server running at http://0.0.0.0:${PORT}`);
   });
 }
 
